@@ -16,3 +16,7 @@ done < build.txt
 
 #Download latest image
 wget ${BUILD_TXT[1]}
+
+VMDK=$(basename ${BUILD_TXT[1]})
+
+bash spore-test-build/createbox-complete.sh ${VMDK}

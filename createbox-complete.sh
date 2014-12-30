@@ -5,12 +5,15 @@ set -e -x
 BOX_NAME=vagrant-build
 BASE_DIR="`pwd`/machines"
 BOX_DIR="${BASE_DIR}/${BOX_NAME}"
-VMDK=coreos-475.1.0-2014-12-30-1252.vmdk
+# VMDK=coreos-475.1.0-2014-12-30-1252.vmdk
+VMDK=$1
 
-cp ${VMDK} vagrant-build.vmdk
 
+# Cleanup before starting
 rm -rf ${BASE_DIR}
-# VBoxManage unregistervm vagrant-build
+VBoxManage unregistervm vagrant-build || true
+
+cp ${VMDK} ${BASE_DIR}/vagrant-build.vmdk
 
 mkdir -p ${BASE_DIR}
 
