@@ -4,9 +4,15 @@ set -e -x
 
 pwd
 
+BUILD_TXT=()
 # read build.txt file to download image
+echo -e '\nReading build.txt\n'
 while read line
 do
     name=$line
-    echo "Text read from file - $name"
+    BUILD_TXT+=($name)
+    echo ${name}
 done < build.txt
+
+#Download latest image
+wget ${BUILD_TXT[1]}
