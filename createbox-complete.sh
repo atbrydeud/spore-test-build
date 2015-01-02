@@ -14,6 +14,7 @@ rm -rf ${BASE_DIR}
 VBoxManage unregistervm vagrant-build || true
 
 mkdir -p ${BASE_DIR}
+mkdir -p ${BOX_DIR}
 
 cp ${VMDK} ${BOX_DIR}/vagrant-build.vmdk
 
