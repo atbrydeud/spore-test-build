@@ -41,7 +41,7 @@ VBoxManage setextradata "${BOX_NAME}" "VBoxInternal/Devices/e1000/0/LUN#0/Config
 # VBoxManage modifyvm "${BOX_NAME}" --usb on --usbehci on
 VBoxManage modifyvm "${BOX_NAME}" --memory 512
 
-VBoxManage startvm "${BOX_NAME}" #--type headless
+VBoxManage startvm "${BOX_NAME}" --type headless
 
 echo "Sleeping to give machine time to boot"
 sleep 60
