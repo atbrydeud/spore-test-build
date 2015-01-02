@@ -16,10 +16,10 @@ VBoxManage unregistervm vagrant-build || true
 mkdir -p ${BASE_DIR}
 mkdir -p ${BOX_DIR}
 
-cp ${VMDK} ${BOX_DIR}/vagrant-build.vmdk
+cp ${VMDK} ${BOX_DIR}/${BOX_NAME}.vmdk
 
 
-VBoxManage createvm --name "${BOX_NAME}" --ostype Linux --basefolder ${BASE_DIR}
+VBoxManage createvm --name "${BOX_NAME}" --ostype Gentoo_64 --basefolder ${BASE_DIR}
 VBoxManage registervm "${BOX_DIR}/${BOX_NAME}.vbox"
 
 # mkdir -p tmp
@@ -31,8 +31,8 @@ VBoxManage registervm "${BOX_DIR}/${BOX_NAME}.vbox"
 # rm -f tmp/clone.vdi
 #mv vagrant-build.vmdk ${BOX_DIR}
 
-VBoxManage storagectl "${BOX_NAME}" --name LsiLogic --add ide --controller PIIX4 # LsiLogic
-VBoxManage storageattach "${BOX_NAME}" --storagectl LsiLogic --port 0 --device 0 --type hdd --medium "${BOX_DIR}/${BOX_NAME}.vmdk"
+VBoxManage storagectl "${BOX_NAME}" --name IDE --add ide --controller PIIX4 # LsiLogic
+VBoxManage storageattach "${BOX_NAME}" --storagectl IDE --port 0 --device 0 --type hdd --medium "${BOX_DIR}/${BOX_NAME}.vmdk"
 
 VBoxManage setextradata "${BOX_NAME}" "VBoxInternal/Devices/e1000/0/LUN#0/Config/SSH/Protocol" TCP
 VBoxManage setextradata "${BOX_NAME}" "VBoxInternal/Devices/e1000/0/LUN#0/Config/SSH/GuestPort" 22

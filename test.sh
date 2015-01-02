@@ -15,8 +15,10 @@ do
 done < build.txt
 
 #Download latest image
+echo -e '\nDownloading image: ${BUILD_TXT[1]}\n'
 wget ${BUILD_TXT[1]}
 
 VMDK=$(basename ${BUILD_TXT[1]})
 
+echo -e '\nRunning create-box\n'
 bash spore-test-build/createbox-complete.sh ${VMDK}
