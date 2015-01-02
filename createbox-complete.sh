@@ -18,7 +18,7 @@ mkdir -p ${BASE_DIR}
 cp ${VMDK} ${BASE_DIR}/vagrant-build.vmdk
 
 
-VBoxManage createvm --name "${BOX_NAME}" --ostype Linux_64 --basefolder ${BASE_DIR}
+VBoxManage createvm --name "${BOX_NAME}" --ostype Linux --basefolder ${BASE_DIR}
 VBoxManage registervm "${BOX_DIR}/${BOX_NAME}.vbox"
 
 # mkdir -p tmp
