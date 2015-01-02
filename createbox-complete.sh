@@ -15,7 +15,7 @@ VBoxManage unregistervm vagrant-build || true
 
 mkdir -p ${BASE_DIR}
 
-cp ${VMDK} ${BASE_DIR}/vagrant-build.vmdk
+cp ${VMDK} ${BOX_DIR}/vagrant-build.vmdk
 
 
 VBoxManage createvm --name "${BOX_NAME}" --ostype Linux --basefolder ${BASE_DIR}
@@ -28,7 +28,7 @@ VBoxManage registervm "${BOX_DIR}/${BOX_NAME}.vbox"
 # VBoxManage clonehd tmp/clone.vdi "${BOX_DIR}/${BOX_NAME}.vmdk" --format vmdk
 # VBoxManage -q closemedium disk tmp/clone.vdi
 # rm -f tmp/clone.vdi
-mv vagrant-build.vmdk ${BOX_DIR}
+#mv vagrant-build.vmdk ${BOX_DIR}
 
 VBoxManage storagectl "${BOX_NAME}" --name LsiLogic --add ide --controller PIIX4 # LsiLogic
 VBoxManage storageattach "${BOX_NAME}" --storagectl LsiLogic --port 0 --device 0 --type hdd --medium "${BOX_DIR}/${BOX_NAME}.vmdk"
