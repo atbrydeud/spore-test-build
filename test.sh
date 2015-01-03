@@ -4,6 +4,8 @@ set -e -x
 
 pwd
 
+rm -rf machines vagrant-build.box
+
 BUILD_TXT=()
 # read build.txt file to download image
 echo -e '\nReading build.txt\n'
@@ -22,3 +24,7 @@ VMDK=$(basename ${BUILD_TXT[1]})
 
 echo -e '\nRunning create-box\n'
 bash spore-test-build/createbox-complete.sh ${VMDK}
+
+vagrant up || true
+
+sleep 100
