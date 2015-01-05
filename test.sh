@@ -5,6 +5,7 @@ set -e -x
 pwd
 
 rm -rf machines vagrant-build.box spore-test-build/vagrant-build.box
+vagrant box remove spore || true
 
 BUILD_TXT=()
 # read build.txt file to download image
