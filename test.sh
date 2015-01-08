@@ -26,6 +26,7 @@ VMDK=$(basename ${BUILD_TXT[1]})
 echo -e '\nRunning create-box\n'
 bash spore-test-build/createbox-complete.sh ${VMDK}
 
+vagrant box remove spore || true
 mv vagrant-build.box spore-test-build/
 cd spore-test-build
 vagrant up || true
